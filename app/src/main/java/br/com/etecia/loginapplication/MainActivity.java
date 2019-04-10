@@ -1,10 +1,12 @@
 package br.com.etecia.loginapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,10 +25,19 @@ public class MainActivity extends AppCompatActivity {
                 String login = txtLogin.getText().toString();
                 String senha = txtSenha.getText().toString();
 
-                if (login.equals("etecia") && senha.equals("123")){
-                    //activity_home nPagina = new activity_home();
+                if (login.equals("etecia") && senha.equals("123")) {
+                    //System.out.println("Logado com sucesso");
+                    Intent intentLogado = new Intent(MainActivity.this, HomeActivity.class);
+                    startActivity(intentLogado);
+                }
+                else {
+                    alert("Login ou senha incorretos");
                 }
             }
         });
+    }
+
+    private void alert(String message){
+        Toast.makeText (this, message, Toast.LENGTH_SHORT).show();
     }
 }
